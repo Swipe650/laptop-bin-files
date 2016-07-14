@@ -33,4 +33,4 @@ Timecount(){
 
 Timecount $m
 
-mplayer ~/bin/Loud-alarm-clock-sound.wav
+play ~/bin/Loud-alarm-clock-sound.wav

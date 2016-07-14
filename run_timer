@@ -1,4 +1,5 @@
-#run scrpt using e.g ~/bin/run_timer 10 
 #!/bin/bash
+#run scrpt using e.g ~/bin/run_timer 10 
+
 mins=$(echo $1 | awk -F: '{ print ($1 * 60) + ($2 * 60) + $3 }')
 ~/bin/timer $mins
