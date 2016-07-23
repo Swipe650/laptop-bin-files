@@ -170,17 +170,11 @@ def count_down():
     global go_on
     go_on = True
     if onset == True: MINUTES = SET
-    if five == True: MINUTES = 5
-    if ten == True: MINUTES = 10
-    if fifteen == True: MINUTES = 15
-    if seven == True: MINUTES = 7
-    if twentytwo == True: MINUTES = 22
     for t in range(MINUTES * 60 - 1, -1, -1):
         if t == 0:
             play_sound()
             switch_to_window(WINDOW_TITLE)
         time_str.set(formatter(t))
-        clear_vars()
         root.update()
             
         # delay one second
@@ -191,66 +185,14 @@ def count_down():
             return
     reset()
 
-#Clear variables
-def clear_vars():
-    global five
-    five = None
-    global ten
-    ten = None
-    global fifteen
-    fifteen = None
-    global seven
-    seven = None
-    global twentytwo
-    twentytwo = None
-    root.update()
 
 def reset():
     global go_on
     go_on = False
     time_str.set(formatter(MINUTES * 60))
-    clear_vars()
+    #clear_vars()
     root.update()
-    
-def five():
-    global go_on
-    go_on = False
-    global five
-    five = True
-    time_str.set(formatter(5 * 60))
-    root.update()
-
-def ten():
-    global go_on
-    go_on = False
-    global ten
-    ten = True
-    time_str.set(formatter(10 * 60))
-    root.update()
-
-def fifteen():
-    global go_on
-    go_on = False
-    global fifteen
-    fifteen = True
-    time_str.set(formatter(15 * 60))
-    root.update()
-
-def seven():
-    global go_on
-    go_on = False
-    global seven
-    seven = True
-    time_str.set(formatter(7 * 60))
-    root.update()
-    
-def twentytwo():
-    global go_on
-    go_on = False
-    global twentytwo
-    twentytwo = True    
-    time_str.set(formatter(22 * 60))
-    root.update()   
+  
 
 def mute():
     call(["kill", "-9", "play"])
@@ -319,46 +261,39 @@ if len(sys.argv) > 1:
 
 root = tk.Tk()
 root.wm_title(WINDOW_TITLE)
-root.wm_geometry ("-100-100")
+root.wm_geometry ("-30-80")
 root.resizable(width=False, height=False)
-root.geometry('{}x{}'.format(195, 140))
+#root.geometry('{}x{}'.format(195, 200))
 
 img = PhotoImage(file='/home/swipe/bin/pytimer/pytimer_icon.png')
 root.tk.call('wm', 'iconphoto', root._w, img)
 
+mainframe = tk.Frame(root, padx="3",pady="3")
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
+
 time_str = tk.StringVar()
 # create the time display label, give it a large font
 # label auto-adjusts to the font
-label_font = ('helvetica', 37)
+label_font = ('helvetica', 34)
 tk.Label(root, textvariable=time_str, font=label_font, bg='white',
-         fg='red', relief='raised', bd=3).pack(fill='x', padx=5, pady=5)
+         fg='red', relief='raised', bd=3).grid(padx=5, pady=5)
 time_str.set(formatter(MINUTES * 60))
 root.update()
-# create buttons
-# pack() positions the buttons below the label
-#tk.Button(root, text='Start', command=count_down).pack(side="left")
-tk.Button(root, text='Start', command=count_down).place(relx=.0, rely=.90, anchor="w")
-#tk.Button(root, text='Start', command=count_down).pack(side=LEFT)
-tk.Button(root, text='Reset', command=reset).place(relx=.50, rely=.90, anchor="c")
-#tk.Button(root, text='Reset', command=reset).pack(side=BOTTOM)
 
-#tk.Button(root, text='Close', command=root.destroy).place(relx=.0, rely=.90, anchor="w")
-tk.Button(root, text='Mute', command=mute).place(relx=.99, rely=.90, anchor="e")
-#tk.Button(root, text='Mute', command=mute).pack(side=RIGHT)
-
-'''
-# Preset buttons
-tk.Button(root, text='5 min', command=five).place(relx=.48, rely=.60, anchor="c")
-tk.Button(root, text='10min', command=ten).place(relx=.48, rely=.75, anchor="c")
-tk.Button(root, text='15min', command=fifteen).place(relx=.99, rely=.75, anchor="e")
-tk.Button(root, text='7 min', command=seven).place(relx=.99, rely=.60, anchor="e")
-tk.Button(root, text='22min', command=twentytwo).place(relx=.48, rely=.90, anchor="c")
-'''
 
 # Input box
-entry = Entry(root, width=10)
-entry.pack(side=TOP,padx=0,pady=1)
-tk.Button(root, text='Set', command=onset).place(relx=.99, rely=.70, anchor="e")
+entry = Entry(root, width=5)
+entry.grid(column=0, row=2, pady=5, sticky=(N))
+tk.Button(root, text='Set', command=onset).grid(column=0, row=2, sticky=(E))
+entry.focus()
+
+# create buttons
+tk.Button(root, text='Start', command=count_down).grid(column=0, row=2, sticky=(W))
+tk.Button(root, text='Reset', command=reset).grid(column=0, row=3, sticky=(N))
+tk.Button(root, text='Close', command=root.destroy).grid(column=0, row=3, sticky=(W))
+tk.Button(root, text='Mute', command=mute).grid(column=0, row=3, sticky=(E))
 
 # start the GUI event loop
 #root.wm_attributes("-topmost", 1)    # always on top
