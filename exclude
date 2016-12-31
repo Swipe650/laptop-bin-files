@@ -25,6 +25,8 @@
 .chrome
 .config/google-chrome
 .config/chromium
+.config/Anatine
+swipe/bin/Anatine-linux-0.5.1
 Downloads
 backups
 Documents
