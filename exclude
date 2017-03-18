@@ -7,6 +7,7 @@
 .cache
 .Trash                          # do I need to say more?
 .local/share/Trash
+.local/share/TelegramDesktop
 .cddb                           # cached info about audio CDs
 .aptitude                       # cached packages lists
 .dropbox
@@ -25,8 +26,8 @@
 .chrome
 .config/google-chrome
 .config/chromium
-.config/Anatine
-swipe/bin/Anatine-linux-0.5.1
+.config/opera
+.config_bak
 Downloads
 backups
 Documents
