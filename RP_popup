@@ -14,7 +14,7 @@
         href=mylink;
         else
         href=mylink.href;
-        window.open(href, windowname, 'width=355,height=325,left=0,top=0,scrollbars=no');
+        window.open(href, windowname, 'width=400,height=225,left=0,top=0,scrollbars=no,location=no,toolbar=no,menubar=no');
         return false;
         }
         //-->
