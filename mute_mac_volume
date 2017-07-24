@@ -1,3 +1,0 @@
-#!/bin/sh
-ssh Swipe@kairos /usr/local/bin/volume $1 &
-
