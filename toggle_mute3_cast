@@ -1,15 +1,17 @@
 #!/bin/bash
 
+vol=0.4
+
 mute () { "$HOME/bin/cast-linux-amd64" --name "Kitchen mini" volume 0; }
 
 
-unmute () { "$HOME/bin/cast-linux-amd64" --name "Kitchen mini" volume 0.4; }
+unmute () { "$HOME/bin/cast-linux-amd64" --name "Kitchen mini" volume $vol ; }
 
 set_default_mute_time()
 {
     mute
     
-    sleep 225
+    sleep 230
      
     unmute
 }

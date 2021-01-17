@@ -9,3 +9,5 @@ if [[ -f ~/.lbc ]]; then rm ~/.lbc & touch ~/.tr
 fi
 
 /home/swipe/bin/cast-linux-amd64 --name "Kitchen mini" media play http://radio.talkradio.co.uk/stream?
+
+/home/swipe/bin/cast-linux-amd64 --name "Kitchen mini" volume 0.4
