@@ -1,6 +1,6 @@
 #!/bin/bash
 
-vol=0.4
+vol=0.37
 
 mute () { "$HOME/bin/cast-linux-amd64" --name "Kitchen mini" volume 0; }
 
