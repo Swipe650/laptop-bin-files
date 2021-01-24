@@ -1,4 +1,6 @@
 #!/bin/bash
- 
+
+# Pass input variable $1 to volume and write $1 to volume value in mute_home on line 7
+
 /home/swipe/bin/cast-linux-amd64 --name "Kitchen mini" volume $1 && sed -i -e "7s/\(volume \).*/\1$1/" ~/bin/mute_home
  
